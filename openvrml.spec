@@ -15,6 +15,12 @@ BuildRequires:  mesagl-devel
 BuildRequires:  gtk+2-devel
 BuildRequires:  libxmu-devel
 BuildRequires:  doxygen
+BuildRequires:  boost-devel
+BuildRequires:  js-devel
+BuildRequires:  curl-devel
+BuildRequires:  mozilla-firefox-devel
+BuildRequires:  libglade2-devel
+BuildRequires:  libgnomeui2-devel
 BuildRoot:  %{_tmppath}/%{name}-%{version}
 
 %description
