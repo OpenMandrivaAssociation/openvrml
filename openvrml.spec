@@ -7,7 +7,7 @@ Version:    0.17.5
 Release:    %mkrel 1
 Summary:    A free cross-platform runtime for VRML and X3D
 License:    LGPL
-Group:      Applications/Multimedia
+Group:      Graphics
 URL:        http://openvrml.org/
 Source0:    http://downloads.sourceforge.net/openvrml/%{name}-%{version}.tar.gz
 BuildRequires:  SDL-devel
@@ -42,14 +42,14 @@ This packages contains development files for %{name}.
 
 %package plugins
 Summary:	Mozilla %{name} plugins
-Group:      Applications/Multimedia
+Group:      Graphics
 
 %description plugins
 This package contain the %{name} plugins for mozilla.
 
 %package doc
 Summary:	Documentation for %{name}
-Group:      Applications/Multimedia
+Group:      Graphics
 
 %description doc
 This package contain the documentation for %{name}.
