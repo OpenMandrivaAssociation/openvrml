@@ -70,6 +70,9 @@ This package contain the documentation for %{name}.
 %install
 rm -rf %{buildroot}
 %makeinstall_std docdir=%{_docdir}/%{name}
+# install manually, as %doc macro remove already existing directory
+install -m  644 AUTHORS ChangeLog NEWS COPYING COPYING.LESSER INSTALL NEWS \
+    README THANKS %{buildroot}%{_docdir}/%{name}
 
 %clean
 rm -rf %{buildroot}
@@ -86,7 +89,8 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog NEWS COPYING COPYING.LESSER INSTALL NEWS README THANKS
+%{_docdir}/%{name}
+%exclude %{_docdir}/%{name}/manual
 %{_bindir}/openvrml-player
 %{_libdir}/openvrml-xembed
 %{_datadir}/openvrml-player
@@ -106,9 +110,8 @@ rm -rf %{buildroot}
 
 %files plugins
 %defattr(-,root,root)
-%doc %{_docdir}/%{name}/manual
 %{_libdir}/mozilla/plugins/*
 
 %files doc
 %defattr(-,root,root)
-%doc %{_docdir}/%{name}/manual
+%{_docdir}/%{name}/manual
