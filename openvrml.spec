@@ -71,7 +71,7 @@ This package contain the documentation for %{name}.
 rm -rf %{buildroot}
 %makeinstall_std docdir=%{_docdir}/%{name}
 # install manually, as %doc macro remove already existing directory
-install -m  644 AUTHORS ChangeLog NEWS COPYING COPYING.LESSER INSTALL NEWS \
+install -m  644 AUTHORS ChangeLog COPYING COPYING.LESSER INSTALL NEWS \
     README THANKS %{buildroot}%{_docdir}/%{name}
 
 %clean
