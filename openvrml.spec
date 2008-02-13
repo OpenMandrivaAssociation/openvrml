@@ -4,7 +4,7 @@
 
 Name:       openvrml
 Version:    0.17.5
-Release:    %mkrel 1
+Release:    %mkrel 2
 Summary:    A free cross-platform runtime for VRML and X3D
 License:    LGPL
 Group:      Graphics
@@ -49,6 +49,7 @@ This packages contains development files for %{name}.
 %package plugins
 Summary:	Mozilla %{name} plugins
 Group:      Graphics
+Requires:   %{name} = %{version}-%{release}
 
 %description plugins
 This package contain the %{name} plugins for mozilla.
