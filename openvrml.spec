@@ -2,9 +2,11 @@
 %define libname %mklibname %{name} %{lib_major}
 %define develname %mklibname -d %{name}
 
+%define _requires_exceptions devel(libmozjs\\((64bit)\\)\\?) 
+
 Name:       openvrml
 Version:    0.17.5
-Release:    %mkrel 2
+Release:    %mkrel 3
 Summary:    A free cross-platform runtime for VRML and X3D
 License:    LGPL
 Group:      Graphics
@@ -33,7 +35,6 @@ browsers.
 %package -n %{libname}
 Summary:	Dynamic libraries for %{name}
 Group:		System/Libraries
-Provides:	%{name}-devel = %{version}-%{release}
 
 %description -n %{libname}
 This packages contains dynamic libraries for %{name}.
