@@ -2,11 +2,11 @@
 %define libname %mklibname %{name} %{lib_major}
 %define develname %mklibname -d %{name}
 
-%define _requires_exceptions devel(libmozjs\\((64bit)\\)\\?) 
+%define _requires_exceptions devel(lib\\(mozjs\\|nspr4\\|plc4\\|plds4\\)\\((64bit)\\)\\?) 
 
 Name:       openvrml
 Version:    0.17.5
-Release:    %mkrel 3
+Release:    %mkrel 4
 Summary:    A free cross-platform runtime for VRML and X3D
 License:    LGPL
 Group:      Graphics
