@@ -82,12 +82,16 @@ rm -rf %{buildroot}
 %post
 %_install_info openvrml-xembed
 
+%if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
+%endif
 
 %preun
 %_remove_install_info openvrml
 
+%if %mdkversion < 200900
 %postun -n %{libname} -p /sbin/ldconfig
+%endif
 
 %files
 %defattr(-,root,root)
