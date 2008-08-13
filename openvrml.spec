@@ -5,7 +5,7 @@
 %define _requires_exceptions devel(lib\\(mozjs\\|nspr4\\|plc4\\|plds4\\)\\((64bit)\\)\\?) 
 
 Name:       openvrml
-Version:    0.17.6
+Version:    0.17.7
 Release:    %mkrel 1
 Summary:    A free cross-platform runtime for VRML and X3D
 License:    LGPL
@@ -20,7 +20,7 @@ BuildRequires:  doxygen
 BuildRequires:  boost-devel
 BuildRequires:  js-devel
 BuildRequires:  curl-devel
-BuildRequires:  mozilla-firefox-devel
+BuildRequires:  libxulrunner-devel
 BuildRequires:  libglade2-devel
 BuildRequires:  libgnomeui2-devel
 BuildRoot:  %{_tmppath}/%{name}-%{version}
