@@ -20,7 +20,7 @@ BuildRequires:  doxygen
 BuildRequires:  boost-devel
 BuildRequires:  js-devel
 BuildRequires:  curl-devel
-BuildRequires:  libxulrunner-devel
+BuildRequires:  xulrunner-devel
 BuildRequires:  libglade2-devel
 BuildRequires:  libgnomeui2-devel
 BuildRoot:  %{_tmppath}/%{name}-%{version}
