@@ -5,8 +5,8 @@
 %define _requires_exceptions devel(lib\\(mozjs\\|nspr4\\|plc4\\|plds4\\)\\((64bit)\\)\\?) 
 
 Name:       openvrml
-Version:    0.17.8
-Release:    %mkrel 2
+Version:    0.17.9
+Release:    %mkrel 1
 Summary:    A free cross-platform runtime for VRML and X3D
 License:    LGPL
 Group:      Graphics
@@ -100,7 +100,8 @@ rm -rf %{buildroot}
 %{_bindir}/openvrml-player
 %{_libdir}/openvrml-xembed
 %{_datadir}/openvrml-player
-%{_infodir}/openvrml-xembed.info*
+%{_datadir}/openvrml-xembed
+%{_datadir}/dbus-1/services/org.openvrml.BrowserControl.service
 
 %files -n %{libname}
 %defattr(-,root,root)
