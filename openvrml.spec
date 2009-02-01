@@ -6,7 +6,7 @@
 
 Name:       openvrml
 Version:    0.17.10
-Release:    %mkrel 4
+Release:    %mkrel 5
 Summary:    A free cross-platform runtime for VRML and X3D
 License:    LGPL
 Group:      Graphics
@@ -44,6 +44,7 @@ This packages contains dynamic libraries for %{name}.
 Summary:	Development files for %{name}
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
+Provides:	%{name}-devel = %{version}-%{release}
 
 %description -n %{develname}
 This packages contains development files for %{name}.
