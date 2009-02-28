@@ -6,7 +6,7 @@
 
 Name:       openvrml
 Version:    0.17.10
-Release:    %mkrel 5
+Release:    %mkrel 6
 Summary:    A free cross-platform runtime for VRML and X3D
 License:    LGPL
 Group:      Graphics
@@ -69,7 +69,7 @@ This package contain the documentation for %{name}.
 %patch0 -p0
 
 %build
-%configure2_5x
+%configure2_5x --enable-gecko-rpath
 %make
 
 %install
