@@ -6,7 +6,7 @@
 
 Name:       openvrml
 Version:    0.17.10
-Release:    %mkrel 6
+Release:    %mkrel 7
 Summary:    A free cross-platform runtime for VRML and X3D
 License:    LGPL
 Group:      Graphics
@@ -69,6 +69,9 @@ This package contain the documentation for %{name}.
 %patch0 -p0
 
 %build
+# the library path exported by mozilla-js pkgconfig file only match
+# the devel package, hence the need to set it manually
+export GRE_PATH=%{_libdir}/xulrunner-`pkg-config mozilla-js --modversion`
 %configure2_5x --enable-gecko-rpath
 %make
 
