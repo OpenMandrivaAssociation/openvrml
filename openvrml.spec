@@ -12,7 +12,7 @@ License:    LGPL
 Group:      Graphics
 URL:        http://openvrml.org/
 Source0:    http://downloads.sourceforge.net/openvrml/%{name}-%{version}.tar.gz
-Patch0:		openvrml-0.17.10-fix-str-fmt.patch
+Patch0:		openvrml-0.17.11-fix-format-errors.patch
 BuildRequires:  SDL-devel
 BuildRequires:  mesagl-devel
 BuildRequires:  gtk+2-devel
@@ -66,7 +66,7 @@ This package contain the documentation for %{name}.
 
 %prep
 %setup -q
-%patch0 -p0
+%patch0 -p 1
 
 %build
 # the library path exported by mozilla-js pkgconfig file only match
