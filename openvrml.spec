@@ -5,14 +5,14 @@
 %define _requires_exceptions devel(lib\\(mozjs\\|nspr4\\|plc4\\|plds4\\)\\((64bit)\\)\\?) 
 
 Name:       openvrml
-Version:    0.17.12
+Version:    0.18.3
 Release:    %mkrel 1
 Summary:    A free cross-platform runtime for VRML and X3D
 License:    LGPL
 Group:      Graphics
 URL:        http://openvrml.org/
 Source0:    http://downloads.sourceforge.net/openvrml/%{name}-%{version}.tar.gz
-Patch0:		openvrml-0.17.11-fix-format-errors.patch
+Patch0:		openvrml-0.18.3-fix-str-fmt.patch
 BuildRequires:  SDL-devel
 BuildRequires:  mesagl-devel
 BuildRequires:  gtk+2-devel
@@ -24,6 +24,8 @@ BuildRequires:  curl-devel
 BuildRequires:  xulrunner-devel
 BuildRequires:  libglade2-devel
 BuildRequires:  libgnomeui2-devel
+BuildRequires:	libtool-devel
+BuildRequires:	gtkglext-devel
 BuildRoot:  %{_tmppath}/%{name}-%{version}
 
 %description
@@ -66,13 +68,12 @@ This package contain the documentation for %{name}.
 
 %prep
 %setup -q
-%patch0 -p 1
+%patch0 -p0
 
 %build
-# the library path exported by mozilla-js pkgconfig file only match
-# the devel package, hence the need to set it manually
-export GRE_PATH=%{_libdir}/xulrunner-`pkg-config mozilla-js --modversion`
-%configure2_5x --enable-gecko-rpath
+export JS_CFLAGS=`pkg-config libxul-unstable --cflags`
+export JS_LIBS=`pkg-config libxul-unstable --libs`
+%configure2_5x --disable-script-node-java
 %make
 
 %install
