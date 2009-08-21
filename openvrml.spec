@@ -75,7 +75,7 @@ This package contain the documentation for %{name}.
 %build
 export JS_CFLAGS=`pkg-config libxul-unstable --cflags`
 export JS_LIBS=`pkg-config libxul-unstable --libs`
-%configure2_5x --disable-script-node-java
+%configure2_5x --disable-script-node-java --disable-static
 %make
 
 %install
@@ -84,6 +84,8 @@ rm -rf %{buildroot}
 # install manually, as %doc macro remove already existing directory
 install -m  644 AUTHORS ChangeLog COPYING COPYING.LESSER INSTALL NEWS \
     README THANKS %{buildroot}%{_docdir}/%{name}
+
+find %{buildroot} -name *.la | xargs rm
 
 %clean
 rm -rf %{buildroot}
@@ -107,7 +109,9 @@ rm -rf %{buildroot}
 %{_docdir}/%{name}
 %exclude %{_docdir}/%{name}/manual
 %{_bindir}/openvrml-player
+%{_libdir}/openvrml
 %{_libdir}/openvrml-xembed
+%{_datadir}/openvrml
 %{_datadir}/openvrml-player
 %{_datadir}/openvrml-xembed
 %{_datadir}/dbus-1/services/org.openvrml.BrowserControl.service
@@ -131,3 +135,4 @@ rm -rf %{buildroot}
 %files doc
 %defattr(-,root,root)
 %{_docdir}/%{name}/manual
+%{_datadir}/javadoc/%{name}-%{version}
