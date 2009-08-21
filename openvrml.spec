@@ -1,5 +1,7 @@
-%define lib_major 0
+%define lib_major 9
 %define libname %mklibname %{name} %{lib_major}
+%define libgl_major 8
+%define libgl %mklibname %{name}-gl %{libgl_major}
 %define develname %mklibname -d %{name}
 
 %define _requires_exceptions devel(lib\\(mozjs\\|nspr4\\|plc4\\|plds4\\)\\((64bit)\\)\\?) 
@@ -43,10 +45,18 @@ Group:		System/Libraries
 %description -n %{libname}
 This packages contains dynamic libraries for %{name}.
 
+%package -n %{libgl}
+Summary:        Dynamic libraries for %{name}
+Group:          System/Libraries
+
+%description -n %{libgl}
+This packages contains dynamic libraries for %{name}.
+
 %package -n %{develname}
 Summary:	Development files for %{name}
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
+Requires:	%{libgl} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 
 %description -n %{develname}
@@ -118,12 +128,14 @@ rm -rf %{buildroot}
 
 %files -n %{libname}
 %defattr(-,root,root)
-%{_libdir}/*.so.*
+%{_libdir}/libopenvrml.so.%{lib_major}*
+
+%files -n %{libgl}
+%defattr(-,root,root)
+%{_libdir}/libopenvrml-gl.so.%{libgl_major}*
 
 %files -n %{develname}
 %defattr(-,root,root)
-%{_libdir}/*.a
-%{_libdir}/*.la
 %{_libdir}/*.so
 %{_includedir}/openvrml
 %{_libdir}/pkgconfig/*
