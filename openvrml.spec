@@ -8,7 +8,7 @@
 
 Name:       openvrml
 Version:    0.18.3
-Release:    %mkrel 1
+Release:    %mkrel 2
 Summary:    A free cross-platform runtime for VRML and X3D
 License:    LGPL
 Group:      Graphics
@@ -16,6 +16,8 @@ URL:        http://openvrml.org/
 Source0:    http://downloads.sourceforge.net/openvrml/%{name}-%{version}.tar.gz
 Patch0:		openvrml-0.18.3-fix-str-fmt.patch
 Patch1:		openvrml-0.18.3-fix-linkage.patch
+Patch2:		openvrml-0.18.3-xulrunner-1.9.2.patch
+Patch3:		openvrml-0.18.3-uri-strerror.patch
 BuildRequires:  SDL-devel
 BuildRequires:  mesagl-devel
 BuildRequires:  gtk+2-devel
@@ -81,10 +83,10 @@ This package contain the documentation for %{name}.
 %setup -q
 %patch0 -p0
 %patch1 -p0
+%patch2 -p0
+%patch3 -p0
 
 %build
-export JS_CFLAGS=`pkg-config libxul-unstable --cflags`
-export JS_LIBS=`pkg-config libxul-unstable --libs`
 %configure2_5x --disable-script-node-java --disable-static
 %make
 
