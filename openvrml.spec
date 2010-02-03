@@ -8,7 +8,7 @@
 
 Name:       openvrml
 Version:    0.18.3
-Release:    %mkrel 3
+Release:    %mkrel 4
 Summary:    A free cross-platform runtime for VRML and X3D
 License:    LGPL
 Group:      Graphics
@@ -18,6 +18,7 @@ Patch0:		openvrml-0.18.3-fix-str-fmt.patch
 Patch1:		openvrml-0.18.3-fix-linkage.patch
 Patch2:		openvrml-0.18.3-xulrunner-1.9.2.patch
 Patch3:		openvrml-0.18.3-uri-strerror.patch
+Patch4:		openvrml-0.18.3-include-boost-function.patch
 BuildRequires:  SDL-devel
 BuildRequires:  mesagl-devel
 BuildRequires:  gtk+2-devel
@@ -85,6 +86,7 @@ This package contain the documentation for %{name}.
 %patch1 -p0
 %patch2 -p0
 %patch3 -p0
+%patch4 -p0
 
 %build
 %configure2_5x --disable-script-node-java --disable-static
