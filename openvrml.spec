@@ -8,7 +8,7 @@
 
 Name:       openvrml
 Version:    0.18.3
-Release:    %mkrel 4
+Release:    %mkrel 5
 Summary:    A free cross-platform runtime for VRML and X3D
 License:    LGPL
 Group:      Graphics
