@@ -7,7 +7,7 @@
 %define _requires_exceptions devel(lib\\(mozjs\\|nspr4\\|plc4\\|plds4\\)\\((64bit)\\)\\?) 
 
 Name:       openvrml
-Version:    0.18.5
+Version:    0.18.6
 Release:    %mkrel 1
 Summary:    A free cross-platform runtime for VRML and X3D
 License:    LGPL
