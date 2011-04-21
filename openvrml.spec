@@ -7,15 +7,14 @@
 %define _requires_exceptions devel(lib\\(mozjs\\|nspr4\\|plc4\\|plds4\\)\\((64bit)\\)\\?) 
 
 Name:       openvrml
-Version:    0.18.6
-Release:    %mkrel 2
+Version:    0.18.8
+Release:    %mkrel 1
 Summary:    A free cross-platform runtime for VRML and X3D
 License:    LGPL
 Group:      Graphics
 URL:        http://openvrml.org/
 Source0:    http://downloads.sourceforge.net/openvrml/%{name}-%{version}.tar.gz
 Patch0:		openvrml-0.18.3-fix-str-fmt.patch
-Patch1:		openvrml-0.18.3-fix-linkage.patch
 Patch2:		openvrml-0.18.5-fix-format-errors.patch
 BuildRequires:  SDL-devel
 BuildRequires:  mesagl-devel
@@ -81,7 +80,6 @@ This package contain the documentation for %{name}.
 %prep
 %setup -q
 %patch0 -p0
-%patch1 -p0
 %patch2 -p1
 
 %build
