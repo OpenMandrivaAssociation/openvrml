@@ -4,10 +4,14 @@
 %define libgl %mklibname %{name}-gl %{libgl_major}
 %define develname %mklibname -d %{name}
 
+%if %{_use_internal_dependency_generator}
+%define __noautoreq 'devel\\(lib(mozjs|nspr4|plc4|plds4)(\\(64bit\\))?\\)' 
+%else
 %define _requires_exceptions devel(lib\\(mozjs\\|nspr4\\|plc4\\|plds4\\)\\((64bit)\\)\\?) 
+%endif
 
 Name:       openvrml
-Version:    0.18.8
+Version:    0.18.9
 Release:    %mkrel 1
 Summary:    A free cross-platform runtime for VRML and X3D
 License:    LGPL
@@ -16,6 +20,7 @@ URL:        http://openvrml.org/
 Source0:    http://downloads.sourceforge.net/openvrml/%{name}-%{version}.tar.gz
 Patch0:		openvrml-0.18.3-fix-str-fmt.patch
 Patch2:		openvrml-0.18.5-fix-format-errors.patch
+Patch3:		openvrml-0.18.9-format_security.patch
 BuildRequires:  SDL-devel
 BuildRequires:  mesagl-devel
 BuildRequires:  gtk+2-devel
@@ -25,11 +30,10 @@ BuildRequires:  boost-devel
 BuildRequires:  js-devel
 BuildRequires:  curl-devel
 BuildRequires:  xulrunner-devel
-BuildRequires:  libglade2-devel
+BuildRequires:  pkgconfig(libglade-2.0)
 BuildRequires:  libgnomeui2-devel
 BuildRequires:	libtool-devel
 BuildRequires:	gtkglext-devel
-BuildRoot:  %{_tmppath}/%{name}-%{version}
 
 %description
 OpenVRML is a free cross-platform runtime for VRML and X3D available under the
@@ -79,8 +83,9 @@ This package contain the documentation for %{name}.
 
 %prep
 %setup -q
-%patch0 -p0
+#patch0 -p0
 %patch2 -p1
+%patch3 -p1
 
 %build
 %configure2_5x --disable-script-node-java --disable-static
@@ -95,25 +100,15 @@ install -m  644 AUTHORS ChangeLog COPYING COPYING.LESSER INSTALL NEWS \
 
 find %{buildroot} -name *.la | xargs rm
 
-%clean
-rm -rf %{buildroot}
-
+%if %{mdvver} < 201200
 %post
 %_install_info openvrml-xembed
 
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-
 %preun
 %_remove_install_info openvrml
-
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
 %endif
 
 %files
-%defattr(-,root,root)
 %{_docdir}/%{name}
 %exclude %{_docdir}/%{name}/manual
 %{_bindir}/openvrml-player
