@@ -1,0 +1,67 @@
+--- src/mozilla-plugin/openvrml.cpp~	2009-07-04 17:19:48.000000000 -0400
++++ src/mozilla-plugin/openvrml.cpp	2009-08-21 01:51:07.000000000 -0400
+@@ -526,7 +526,7 @@
+     } catch (std::bad_alloc &) {
+         return NPERR_OUT_OF_MEMORY_ERROR;
+     } catch (std::runtime_error & ex) {
+-        g_critical(ex.what());
++        g_critical("%s",ex.what());
+         return NPERR_GENERIC_ERROR;
+     }
+     return NPERR_NO_ERROR;
+--- src/openvrml-player/curlbrowserhost.cpp~	2009-07-04 17:20:21.000000000 -0400
++++ src/openvrml-player/curlbrowserhost.cpp	2009-08-21 02:33:36.000000000 -0400
+@@ -802,7 +802,7 @@
+                                      cancellable,
+                                      &error);
+             if (error) {
+-                g_warning(error->message);
++                g_warning("%s",error->message);
+                 g_error_free(error);
+                 error = 0;
+             }
+--- src/openvrml-xembed/main.cpp~	2009-07-04 17:19:48.000000000 -0400
++++ src/openvrml-xembed/main.cpp	2009-08-21 02:35:25.000000000 -0400
+@@ -187,7 +187,7 @@
+     g_option_context_add_group(context, gtk_get_option_group(true));
+     gboolean succeeded = g_option_context_parse(context, &argc, &argv, &error);
+     if (!succeeded) {
+-        if (error) { g_critical(error->message); }
++        if (error) { g_critical("%s",error->message); }
+         return EXIT_FAILURE;
+     }
+ 
+--- src/openvrml-xembed/browser.cpp~	2009-07-04 17:19:48.000000000 -0400
++++ src/openvrml-xembed/browser.cpp	2009-08-21 02:42:23.000000000 -0400
+@@ -360,6 +360,7 @@
+         g_set_error(error,
+                     OPENVRML_XEMBED_ERROR,
+                     OPENVRML_XEMBED_ERROR_UNKNOWN_STREAM,
++		    "%s",
+                     ex.what());
+         return false;
+     }
+@@ -383,6 +384,7 @@
+         g_set_error(error,
+                     OPENVRML_XEMBED_ERROR,
+                     OPENVRML_XEMBED_ERROR_UNKNOWN_STREAM,
++		    "%s",
+                     ex.what());
+         return false;
+     }
+@@ -409,6 +411,7 @@
+         g_set_error(error,
+                     OPENVRML_XEMBED_ERROR,
+                     OPENVRML_XEMBED_ERROR_UNKNOWN_STREAM,
++		    "%s",
+                     ex.what());
+     }
+     return true;
+@@ -437,6 +440,7 @@
+     } catch (const std::exception & ex) {
+         *error = g_error_new(OPENVRML_XEMBED_ERROR,
+                              OPENVRML_XEMBED_ERROR_FAILED,
++			     "%s",
+                              ex.what());
+         return false;
+     }

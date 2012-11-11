@@ -1,0 +1,75 @@
+diff -Naur -x '*~' openvrml-0.18.5/src/openvrml-player/curlbrowserhost.cpp openvrml-0.18.5-fix-format-errors/src/openvrml-player/curlbrowserhost.cpp
+--- openvrml-0.18.5/src/openvrml-player/curlbrowserhost.cpp	2009-10-27 18:21:35.000000000 +0100
++++ openvrml-0.18.5-fix-format-errors/src/openvrml-player/curlbrowserhost.cpp	2010-02-16 10:51:10.000000000 +0100
+@@ -445,7 +445,7 @@
+             g_set_error(error,
+                         OPENVRML_PLAYER_CURL_BROWSER_HOST_ERROR,
+                         OPENVRML_PLAYER_CURL_BROWSER_HOST_ERROR_CURL,
+-                        curl_easy_strerror(setopt_result));
++                        "%s", curl_easy_strerror(setopt_result));
+         }
+         return setopt_result;
+     }
+@@ -475,7 +475,7 @@
+             g_set_error(error,
+                         OPENVRML_PLAYER_CURL_BROWSER_HOST_ERROR,
+                         OPENVRML_PLAYER_CURL_BROWSER_HOST_ERROR_CURL,
+-                        curl_easy_strerror(setopt_result));
++                        "%s", curl_easy_strerror(setopt_result));
+             return 1;
+         }
+ 
+@@ -485,7 +485,7 @@
+             g_set_error(error,
+                         OPENVRML_PLAYER_CURL_BROWSER_HOST_ERROR,
+                         OPENVRML_PLAYER_CURL_BROWSER_HOST_ERROR_CURL,
+-                        curl_easy_strerror(setopt_result));
++                        "%s", curl_easy_strerror(setopt_result));
+             return 1;
+         }
+ 
+@@ -495,7 +495,7 @@
+             g_set_error(error,
+                         OPENVRML_PLAYER_CURL_BROWSER_HOST_ERROR,
+                         OPENVRML_PLAYER_CURL_BROWSER_HOST_ERROR_CURL,
+-                        curl_easy_strerror(setopt_result));
++                        "%s", curl_easy_strerror(setopt_result));
+             return 1;
+         }
+ 
+@@ -507,7 +507,7 @@
+             g_set_error(error,
+                         OPENVRML_PLAYER_CURL_BROWSER_HOST_ERROR,
+                         OPENVRML_PLAYER_CURL_BROWSER_HOST_ERROR_CURL,
+-                        curl_easy_strerror(setopt_result));
++                        "%s", curl_easy_strerror(setopt_result));
+             return 1;
+         }
+ 
+@@ -517,7 +517,7 @@
+             g_set_error(error,
+                         OPENVRML_PLAYER_CURL_BROWSER_HOST_ERROR,
+                         OPENVRML_PLAYER_CURL_BROWSER_HOST_ERROR_CURL,
+-                        curl_easy_strerror(setopt_result));
++                        "%s", curl_easy_strerror(setopt_result));
+             return 1;
+         }
+ 
+@@ -527,7 +527,7 @@
+             g_set_error(error,
+                         OPENVRML_PLAYER_CURL_BROWSER_HOST_ERROR,
+                         OPENVRML_PLAYER_CURL_BROWSER_HOST_ERROR_CURL,
+-                        curl_multi_strerror(add_handle_result));
++                        "%s", curl_multi_strerror(add_handle_result));
+             return 1;
+         }
+ 
+@@ -553,7 +553,7 @@
+         g_set_error(error,
+                     OPENVRML_PLAYER_CURL_BROWSER_HOST_ERROR,
+                     OPENVRML_PLAYER_CURL_BROWSER_HOST_ERROR_OUT_OF_MEMORY,
+-                    ex.what());
++                    "%s", ex.what());
+         return 1;
+     }
+     return 0;

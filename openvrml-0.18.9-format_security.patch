@@ -1,0 +1,79 @@
+Index: openvrml-0.18.9/src/mozilla-plugin/openvrml.cpp
+===================================================================
+--- openvrml-0.18.9.orig/src/mozilla-plugin/openvrml.cpp
++++ openvrml-0.18.9/src/mozilla-plugin/openvrml.cpp
+@@ -516,7 +516,7 @@ NPError NPP_SetWindow(const NPP instance
+     } catch (std::bad_alloc &) {
+         return NPERR_OUT_OF_MEMORY_ERROR;
+     } catch (std::runtime_error & ex) {
+-        g_critical(ex.what());
++        g_critical("%s", ex.what());
+         return NPERR_GENERIC_ERROR;
+     }
+     return NPERR_NO_ERROR;
+Index: openvrml-0.18.9/src/openvrml-player/curlbrowserhost.cpp
+===================================================================
+--- openvrml-0.18.9.orig/src/openvrml-player/curlbrowserhost.cpp
++++ openvrml-0.18.9/src/openvrml-player/curlbrowserhost.cpp
+@@ -897,7 +897,7 @@ size_t openvrml_player_curl_browser_host
+                                  cancellable,
+                                  &error);
+         if (error) {
+-            g_warning(error->message);
++            g_warning("%s", error->message);
+             g_error_free(error);
+             error = 0;
+         }
+Index: openvrml-0.18.9/src/openvrml-xembed/main.cpp
+===================================================================
+--- openvrml-0.18.9.orig/src/openvrml-xembed/main.cpp
++++ openvrml-0.18.9/src/openvrml-xembed/main.cpp
+@@ -186,7 +186,7 @@ int main(int argc, char * argv[])
+     g_option_context_add_group(context, gtk_get_option_group(true));
+     gboolean succeeded = g_option_context_parse(context, &argc, &argv, &error);
+     if (!succeeded) {
+-        if (error) { g_critical(error->message); }
++        if (error) { g_critical("%s", error->message); }
+         return EXIT_FAILURE;
+     }
+ 
+Index: openvrml-0.18.9/src/openvrml-xembed/browser.cpp
+===================================================================
+--- openvrml-0.18.9.orig/src/openvrml-xembed/browser.cpp
++++ openvrml-0.18.9/src/openvrml-xembed/browser.cpp
+@@ -365,7 +365,7 @@ openvrml_xembed_browser_new_stream(
+         g_set_error(error,
+                     OPENVRML_XEMBED_ERROR,
+                     OPENVRML_XEMBED_ERROR_UNKNOWN_STREAM,
+-                    ex.what());
++                    "%s", ex.what());
+         return false;
+     }
+     return true;
+@@ -388,7 +388,7 @@ openvrml_xembed_browser_destroy_stream(
+         g_set_error(error,
+                     OPENVRML_XEMBED_ERROR,
+                     OPENVRML_XEMBED_ERROR_UNKNOWN_STREAM,
+-                    ex.what());
++                    "%s", ex.what());
+         return false;
+     }
+     return true;
+@@ -414,7 +414,7 @@ openvrml_xembed_browser_write(OpenvrmlXe
+         g_set_error(error,
+                     OPENVRML_XEMBED_ERROR,
+                     OPENVRML_XEMBED_ERROR_UNKNOWN_STREAM,
+-                    ex.what());
++                    "%s", ex.what());
+     }
+     return true;
+ }
+@@ -442,7 +442,7 @@ openvrml_xembed_browser_load_url(Openvrm
+     } catch (const std::exception & ex) {
+         *error = g_error_new(OPENVRML_XEMBED_ERROR,
+                              OPENVRML_XEMBED_ERROR_FAILED,
+-                             ex.what());
++                             "%s", ex.what());
+         return false;
+     }
+     return true;
