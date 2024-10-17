@@ -16,7 +16,7 @@ Version:	0.18.9
 Release:	2
 License:	GPLv3 and LGPLv3
 Group:		Graphics
-URL:		http://openvrml.org/
+URL:		https://openvrml.org/
 Source0:	http://downloads.sourceforge.net/openvrml/%{name}-%{version}.tar.gz
 Patch0:		openvrml-0.18.3-fix-str-fmt.patch
 Patch2:		openvrml-0.18.5-fix-format-errors.patch
